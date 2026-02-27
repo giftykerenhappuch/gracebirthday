@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --peach: #F4A98A;
+    --blush: #F2C4CE;
+    --cream: #FFF5EE;
+    --gold: #C9A84C;
+    --royal: #3D5A80;
+    --deep: #2C3E50;
+    --soft-pink: #FFD6E0;
+    --mint: #C8E6C9;
+    --lavender: #E8D5F5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,245,238,0.92);
+    backdrop-filter: blur(12px);
+    padding: 12px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 4px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(244,169,138,0.3);
+    box-shadow: 0 2px 20px rgba(244,169,138,0.15);
+  }
+
+  nav a {
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--royal);
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  nav a:hover {
+    background: var(--peach);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    min-height: 100vh;
+    padding: 100px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ===== PAGE 1 – HOME ===== */
+  #home {
+    background: linear-gradient(135deg, #fff0f3 0%, #fce4ec 30%, #f8f0ff 60%, #fff8e1 100%);
+    text-align: center;
+  }
+
+  .floating-icons {
+    position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  }
+
+  .float-item {
+    position: absolute;
+    font-size: clamp(16px, 3vw, 28px);
+    animation: floatUp linear infinite;
+    opacity: 0.5;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.4; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+  }
+
+  .birthday-banner {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 9vw, 96px);
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--peach), var(--gold), var(--blush));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    animation: fadeSlideDown 1s ease forwards;
+  }
+
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .photo-frame {
+    width: clamp(180px, 35vw, 280px);
+    height: clamp(180px, 35vw, 280px);
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--peach), var(--blush), var(--lavender));
+    padding: 5px;
+    margin: 32px auto;
+    position: relative;
+    animation: fadeIn 1.2s ease 0.3s both;
+    box-shadow: 0 20px 60px rgba(244,169,138,0.4);
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute; inset: -4px;
+    border-radius: 50%;
+    background: conic-gradient(var(--peach), var(--gold), var(--blush), var(--peach));
+    z-index: -1;
+    animation: rotateBorder 4s linear infinite;
+  }
+
+  @keyframes rotateBorder {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .photo-frame img, .photo-placeholder {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .photo-placeholder {
+    background: linear-gradient(135deg, #fce4ec, #f8f0ff);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-size: 40px; gap: 8px; border-radius: 50%;
+    color: var(--peach);
+  }
+
+  .photo-placeholder span { font-size: 13px; font-weight: 600; color: var(--royal); }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(20px, 4vw, 32px);
+    color: var(--royal);
+    animation: fadeIn 1.5s ease 0.6s both;
+    max-width: 600px;
+    line-height: 1.4;
+  }
+
+  .hero-subtitle strong { color: var(--peach); font-style: normal; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Countdown */
+  .countdown-wrap {
+    margin-top: 40px;
+    animation: fadeIn 1.5s ease 0.9s both;
+  }
+
+  .countdown-label {
+    font-size: 13px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+  }
+
+  .countdown {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  }
+
+  .countdown-box {
+    background: white;
+    border-radius: 16px;
+    padding: 16px 20px;
+    min-width: 72px;
+    box-shadow: 0 8px 24px rgba(244,169,138,0.25);
+    text-align: center;
+    border: 1px solid rgba(244,169,138,0.3);
+  }
+
+  .countdown-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--royal);
+    line-height: 1;
+  }
+
+  .countdown-unit {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--peach); margin-top: 4px;
+  }
+
+  .birthday-msg {
+    background: linear-gradient(135deg, var(--royal), #5B8FB9);
+    color: white; border-radius: 20px; padding: 20px 32px;
+    font-size: 20px; font-weight: 700; margin-top: 20px;
+    text-align: center;
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+
+  /* ===== PAGE 2 – SUPER MOM ===== */
+  #supermom {
+    background: linear-gradient(160deg, #fff9f0 0%, #fce4ec 50%, #f3e5f5 100%);
+  }
+
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 7vw, 72px);
+    font-weight: 700;
+    color: var(--royal);
+    text-align: center;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .page-title span { color: var(--peach); }
+
+  .page-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(16px, 3vw, 22px);
+    color: #888;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  /* Audio Player */
+  .audio-card {
+    background: white;
+    border-radius: 24px;
+    padding: 28px 32px;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: 0 16px 48px rgba(244,169,138,0.2);
+    border: 1px solid rgba(244,169,138,0.2);
+    text-align: center;
+    margin: 12px;
+  }
+
+  .audio-card-icon { font-size: 48px; margin-bottom: 12px; }
+  .audio-card-title { font-weight: 700; font-size: 16px; color: var(--royal); margin-bottom: 4px; }
+  .audio-card-desc { font-size: 13px; color: #888; margin-bottom: 16px; }
+
+  .custom-audio {
+    width: 100%;
+    accent-color: var(--peach);
+    border-radius: 20px;
+  }
+
+  /* Upload area */
+  .upload-zone {
+    border: 2px dashed var(--peach);
+    border-radius: 16px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    background: rgba(244,169,138,0.05);
+    color: var(--peach);
+    font-weight: 600;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
+  .upload-zone:hover { background: rgba(244,169,138,0.12); }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, var(--peach), var(--blush), var(--lavender));
+  }
+
+  .tl-item {
+    display: flex; gap: 20px; align-items: flex-start;
+    margin-bottom: 32px;
+    opacity: 0; transform: translateX(-30px);
+    transition: all 0.6s ease;
+  }
+
+  .tl-item.visible { opacity: 1; transform: translateX(0); }
+
+  .tl-dot {
+    width: 60px; height: 60px; flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--peach), var(--blush));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 16px rgba(244,169,138,0.4);
+    position: relative; z-index: 1;
+  }
+
+  .tl-content {
+    background: white; border-radius: 16px; padding: 16px 20px;
+    flex: 1;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border-left: 3px solid var(--peach);
+  }
+
+  .tl-content h4 { font-weight: 700; color: var(--royal); margin-bottom: 4px; }
+  .tl-content p { font-size: 13px; color: #666; line-height: 1.5; }
+
+  /* ===== PAGE 3 – ACHIEVEMENTS ===== */
+  #govt {
+    background: linear-gradient(160deg, #f0f4ff 0%, #e8f5e9 60%, #fff9f0 100%);
+  }
+
+  .achievement-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .ach-card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0; transform: translateY(30px);
+    transition: all 0.6s ease;
+    position: relative; overflow: hidden;
+  }
+
+  .ach-card.visible { opacity: 1; transform: translateY(0); }
+
+  .ach-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--royal), var(--gold));
+  }
+
+  .ach-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.12); }
+
+  .ach-icon { font-size: 48px; margin-bottom: 12px; }
+  .ach-title { font-weight: 700; font-size: 17px; color: var(--royal); margin-bottom: 8px; }
+  .ach-desc { font-size: 13px; color: #666; line-height: 1.6; }
+
+  .quote-box {
+    background: linear-gradient(135deg, var(--royal), #5B8FB9);
+    border-radius: 20px;
+    padding: 32px 40px;
+    max-width: 700px;
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+    position: relative;
+  }
+
+  .quote-box::before { content: '"'; font-size: 120px; position: absolute; top: -20px; left: 20px; opacity: 0.15; font-family: Georgia; line-height: 1; }
+
+  .quote-box p { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 3vw, 24px); font-style: italic; line-height: 1.6; }
+  .quote-box cite { display: block; margin-top: 12px; font-size: 13px; opacity: 0.7; font-style: normal; letter-spacing: 2px; text-transform: uppercase; }
+
+  /* ===== PAGE 4 – MEMORIES ===== */
+  #memories {
+    background: linear-gradient(160deg, #fff8e1 0%, #fce4ec 100%);
+  }
+
+  .memories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    max-width: 900px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .memory-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    transition: transform 0.3s;
+    opacity: 0; transform: scale(0.9);
+    transition: all 0.5s ease;
+    border-bottom: 3px solid var(--blush);
+  }
+
+  .memory-card.visible { opacity: 1; transform: scale(1); }
+  .memory-card:hover { transform: scale(1.03); }
+
+  .memory-emoji { font-size: 32px; margin-bottom: 10px; }
+  .memory-title { font-weight: 700; color: var(--royal); margin-bottom: 6px; }
+  .memory-desc { font-size: 13px; color: #666; line-height: 1.6; font-style: italic; }
+
+  .akka-msg {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 4vw, 32px);
+    font-style: italic;
+    color: var(--royal);
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.6;
+    background: white;
+    padding: 32px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(244,169,138,0.2);
+    border-top: 4px solid var(--peach);
+    position: relative;
+  }
+
+  .akka-msg::after {
+    content: '❤️';
+    position: absolute;
+    bottom: -15px; left: 50%; transform: translateX(-50%);
+    font-size: 28px;
+  }
+
+  /* ===== PAGE 5 – LETTERS ===== */
+  #letters {
+    background: linear-gradient(160deg, #f3e5f5 0%, #e8f5e9 100%);
+  }
+
+  .letters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .letter-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px 28px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    position: relative;
+    opacity: 0; transform: translateY(30px);
+    transition: all 0.6s ease;
+  }
+
+  .letter-card.visible { opacity: 1; transform: translateY(0); }
+
+  .letter-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .tag-emotional { background: var(--soft-pink); color: #c2185b; }
+  .tag-funny { background: #fff9c4; color: #f57f17; }
+  .tag-proud { background: var(--mint); color: #2e7d32; }
+
+  .letter-card h4 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--royal); margin-bottom: 12px; }
+  .letter-card p { font-size: 14px; color: #555; line-height: 1.8; }
+  .letter-sig { margin-top: 16px; font-weight: 700; color: var(--peach); font-size: 14px; }
+
+  /* ===== PAGE 6 – TIMELINE ===== */
+  #timeline-page {
+    background: linear-gradient(160deg, #e8f4fd 0%, #fce4ec 100%);
+  }
+
+  .big-timeline {
+    max-width: 700px; width: 100%;
+    position: relative;
+  }
+
+  .big-timeline::before {
+    content: '';
+    position: absolute; left: 50%; transform: translateX(-50%);
+    top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(to bottom, var(--royal), var(--gold), var(--peach), var(--blush));
+  }
+
+  .btl-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: calc(50% + 30px);
+    margin-bottom: 40px;
+    opacity: 0; transform: translateX(-40px);
+    transition: all 0.7s ease;
+  }
+
+  .btl-item:nth-child(even) {
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-left: calc(50% + 30px);
+    transform: translateX(40px);
+  }
+
+  .btl-item.visible { opacity: 1; transform: translateX(0); }
+
+  .btl-content {
+    background: white;
+    border-radius: 16px;
+    padding: 18px 20px;
+    max-width: 240px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    position: relative;
+  }
+
+  .btl-year {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 4px;
+  }
+
+  .btl-content h4 { font-weight: 700; color: var(--royal); }
+  .btl-content p { font-size: 12px; color: #888; margin-top: 4px; }
+  .btl-icon { font-size: 28px; margin-bottom: 6px; }
+
+  /* Center dot */
+  .btl-item::after {
+    content: '';
+    position: absolute;
+    left: 50%; transform: translateX(-50%);
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px var(--gold);
+    top: 50%; margin-top: -8px;
+  }
+
+  /* ===== PAGE 7 – VIDEO/SCAN GALLERY ===== */
+  #gallery {
+    background: linear-gradient(160deg, #fff9f0 0%, #e8f0fe 100%);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .gallery-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+    opacity: 0; transform: scale(0.9);
+    transition: all 0.6s ease;
+  }
+
+  .gallery-card.visible { opacity: 1; transform: scale(1); }
+  .gallery-card:hover { transform: scale(1.02); }
+
+  .gallery-thumb {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gallery-thumb.scan-bg { background: linear-gradient(135deg, #1a1a2e, #16213e); }
+  .gallery-thumb.kit-bg { background: linear-gradient(135deg, #fce4ec, #f8f0ff); }
+  .gallery-thumb.audio-bg { background: linear-gradient(135deg, #e8f5e9, #e3f2fd); }
+
+  .gallery-thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  .gallery-body { padding: 20px; }
+  .gallery-body h4 { font-weight: 700; color: var(--royal); margin-bottom: 6px; }
+  .gallery-body p { font-size: 13px; color: #888; line-height: 1.5; }
+
+  .file-upload-label {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, var(--peach), var(--blush));
+    color: white;
+    border-radius: 20px;
+    font-size: 12px; font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .file-upload-label:hover { opacity: 0.85; }
+
+  .audio-viz {
+    display: flex; align-items: center; gap: 3px;
+    justify-content: center; margin-top: 8px;
+  }
+
+  .audio-viz-bar {
+    width: 4px; background: var(--peach); border-radius: 2px;
+    animation: audioBounce 0.8s ease infinite alternate;
+  }
+
+  @keyframes audioBounce {
+    from { height: 6px; }
+    to { height: 28px; }
+  }
+
+  /* ===== PAGE 8 – WHY SHE IS MY HERO ===== */
+  #hero-page {
+    background: linear-gradient(160deg, #fff3e0 0%, #fce4ec 100%);
+  }
+
+  .reasons-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .reason-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.5s ease;
+  }
+
+  .reason-item.visible { opacity: 1; transform: translateY(0); }
+
+  .reason-num {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--royal), #5B8FB9);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px;
+  }
+
+  .reason-text h4 { font-weight: 700; color: var(--royal); margin-bottom: 4px; }
+  .reason-text p { font-size: 13px; color: #666; line-height: 1.5; }
+
+  /* ===== PAGE 9 – BLESSINGS ===== */
+  #blessings {
+    background: linear-gradient(160deg, #e8f0fe 0%, #fce4ec 100%);
+  }
+
+  .wish-form {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 560px;
+    width: 100%;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+  }
+
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-weight: 700; font-size: 13px; color: var(--royal); margin-bottom: 8px; letter-spacing: 0.5px; }
+
+  .form-group input, .form-group textarea {
+    width: 100%;
+    border: 2px solid rgba(244,169,138,0.3);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: var(--deep);
+    transition: border-color 0.3s;
+    outline: none;
+    resize: none;
+  }
+
+  .form-group input:focus, .form-group textarea:focus {
+    border-color: var(--peach);
+    box-shadow: 0 0 0 4px rgba(244,169,138,0.1);
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--royal), #5B8FB9);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(61,90,128,0.4); }
+
+  .wishes-display {
+    max-width: 560px; width: 100%;
+    margin-top: 40px;
+  }
+
+  .wishes-display h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--royal); margin-bottom: 20px; text-align: center; }
+
+  .wish-item {
+    background: white;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--peach);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    animation: fadeIn 0.4s ease;
+  }
+
+  .wish-name { font-weight: 700; color: var(--royal); margin-bottom: 4px; }
+  .wish-msg { font-size: 13px; color: #555; font-style: italic; }
+
+  /* ===== PAGE 10 – FINAL SURPRISE ===== */
+  #final {
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    text-align: center;
+    position: relative;
+  }
+
+  #final::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(244,169,138,0.15) 0%, transparent 70%);
+  }
+
+  .surprise-btn {
+    padding: 20px 48px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, var(--peach), var(--gold));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    box-shadow: 0 16px 40px rgba(244,169,138,0.4);
+    transition: all 0.3s;
+    text-transform: uppercase;
+  }
+
+  .surprise-btn:hover { transform: translateY(-4px) scale(1.05); }
+
+  .final-message {
+    display: none;
+    animation: finalReveal 1s ease forwards;
+  }
+
+  @keyframes finalReveal {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .final-big-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 8vw, 80px);
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .final-big-text span { color: var(--peach); }
+
+  .final-sub {
+    font-size: clamp(16px, 3vw, 22px);
+    color: rgba(255,255,255,0.75);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  /* Confetti */
+  .confetti-piece {
+    position: fixed;
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    animation: confettiFall linear forwards;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ===== SHARED UTILS ===== */
+  .section-tag {
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 30px;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .tag-pink { background: var(--soft-pink); color: #c2185b; }
+  .tag-blue { background: rgba(61,90,128,0.1); color: var(--royal); }
+  .tag-gold { background: rgba(201,168,76,0.15); color: var(--gold); }
+
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--peach), var(--blush));
+    border-radius: 2px;
+    margin: 16px auto;
+  }
+
+  @media (max-width: 600px) {
+    .big-timeline::before { left: 20px; transform: none; }
+    .btl-item { padding-right: 0; padding-left: 60px; justify-content: flex-start; transform: translateX(-30px); }
+    .btl-item:nth-child(even) { padding-left: 60px; transform: translateX(-30px); }
+    .btl-item::after { left: 20px; transform: none; }
+    .btl-content { max-width: 100%; }
+    nav a { font-size: 9px; padding: 4px 7px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home">🎂 Home</a>
+  <a href="#supermom">👶 Supermom</a>
+  <a href="#govt">🏆 Achiever</a>
+  <a href="#memories">🕰 Memories</a>
+  <a href="#letters">💌 Letters</a>
+  <a href="#timeline-page">🌟 Timeline</a>
+  <a href="#gallery">🖼 Gallery</a>
+  <a href="#blessings">🌈 Blessings</a>
+  <a href="#final">🎉 Surprise</a>
+</nav>
+
+<!-- ============================================================ -->
+<!--  PAGE 1 – HOME                                               -->
+<!-- ============================================================ -->
+<section id="home">
+  <div class="floating-icons" id="floatingIcons"></div>
+
+  <div class="section-tag tag-pink">🎉 A very special day</div>
+  <div class="birthday-banner">Happy Birthday<br>Grace 🎂</div>
+
+  <div class="photo-frame">
+    <img src="images\grace.jfif" alt="Akka" onerror="this.outerHTML='<div class=\'photo-placeholder\'><span style=\'font-size:60px\'>👩</span><span>akka.jpg</span></div>'">
+  </div>
+
+  <div class="hero-subtitle">
+    To the <strong>strongest woman</strong> I know —<br>
+    "You carry the world with a smile,<br>and call it ordinary." ❤️
+  </div>
+
+  <div class="countdown-wrap">
+    <div id="countdownSection">
+      <div class="countdown-label">🕯️ Countdown to your day</div>
+      <div class="countdown" id="countdown"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  PAGE 2 – SUPER MOM                                          -->
+<!-- ============================================================ -->
+<section id="supermom">
+  <div class="section-tag tag-pink">👶 New Chapter</div>
+  <div class="page-title">From Sister to <span>Supermom</span></div>
+  <div class="page-subtitle">Her new journey begins… and it's the most beautiful one yet.</div>
+
+  <!-- Audio / Image Cards — files loaded directly from images/ folder -->
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:900px;width:100%;margin-bottom:40px;">
+
+    <div class="audio-card">
+      <div class="audio-card-icon">🎵👶</div>
+      <div class="audio-card-title">Her First Cry</div>
+      <div class="audio-card-desc">The most precious sound in the world — her very first hello.</div>
+      <audio class="custom-audio" controls style="width:100%">
+        <source src="images\WhatsApp Audio 2026-02-27 at 10.12.12 PM (1).ogg" type="audio/mpeg">
+        <source src="images/first_cry.wav" type="audio/wav">
+        <source src="images/first_cry.m4a" type="audio/mp4">
+        Your browser does not support audio.
+      </audio>
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-card-icon">📋✨</div>
+      <div class="audio-card-title">Baby Kit Test</div>
+      <div class="audio-card-desc">The moment that changed everything. Two lines. A new world begins.</div>
+      <img src="images\kit.jfif" alt="Kit Tester"
+        onerror="this.src='images/kit_tester.jpeg';this.onerror=()=>this.outerHTML='<div style=\'color:#ccc;font-size:13px;text-align:center;padding:20px;\'>Place kit_tester.jpg in images/</div>'"
+        style="width:100%;max-height:160px;object-fit:contain;border-radius:12px;margin-top:8px;">
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-card-icon">🩻✨</div>
+      <div class="audio-card-title">Baby Scans</div>
+      <div class="audio-card-desc">Little hands, tiny feet — visible for the first time. A miracle in every image.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px;">
+        <img src="images\miracle.jfif" alt="Scan 1" onerror="this.style.display='none'"
+          style="width:80px;height:80px;object-fit:cover;border-radius:8px;">
+        <img src="images\scan2.jfif" alt="Scan 2" onerror="this.style.display='none'"
+          style="width:80px;height:80px;object-fit:cover;border-radius:8px;">
+        <img src="images\scan3.jfif" alt="Scan 3" onerror="this.style.display='none'"
+          style="width:80px;height:80px;object-fit:cover;border-radius:8px;">
+        <img src="images\scan4.jfif" alt="Scan 4" onerror="this.style.display='none'"
+          style="width:80px;height:80px;object-fit:cover;border-radius:8px;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Mom Journey Timeline -->
+  <div class="page-title" style="font-size:28px;margin-bottom:32px;">Her Journey to Motherhood</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot">🤱</div>
+      <div class="tl-content">
+        <h4>The Kit Test Moment</h4>
+        <p>That magical moment when two lines changed her life forever. Her heart knew before her mind could believe it.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">🩻</div>
+      <div class="tl-content">
+        <h4>First Scan</h4>
+        <p>A tiny heartbeat on a screen. That was the moment she fell completely in love with someone she hadn't met yet.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">🌸</div>
+      <div class="tl-content">
+        <h4>Pregnancy Days</h4>
+        <p>Nine months of love, sacrifice, and growing. Every discomfort borne with grace, every kick celebrated with joy.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">👶</div>
+      <div class="tl-content">
+        <h4>Baby's Arrival</h4>
+        <p>The first cry. The first breath. The first time she heard a sound that instantly became the most important sound in her world.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">😊</div>
+      <div class="tl-content">
+        <h4>Baby's First Smile</h4>
+        <p>When that little face smiled back — she knew every sleepless night was worth it. Every single one.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-box" style="margin-top:40px;">
+    <p>"You didn't just give birth to a baby — you were born again as a mother."</p>
+    <cite>— With all our love</cite>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  PAGE 3 – GOVT ACHIEVER                                      -->
+<!-- ============================================================ -->
+<section id="govt">
+  <div class="section-tag tag-gold">🏆 Dream Achieved</div>
+  <div class="page-title">She Dreamed. She Worked. <span>She Achieved.</span></div>
+  <div class="page-subtitle">From late nights with books to a government badge — this is her story.</div>
+
+  <div class="achievement-cards">
+    <div class="ach-card">
+      <div class="ach-icon">📚</div>
+      <div class="ach-title">The Long Nights</div>
+      <div class="ach-desc">While others slept, she studied. While others doubted, she believed. Page by page, she built her future.</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">💪</div>
+      <div class="ach-title">The Hardships</div>
+      <div class="ach-desc">Every failure was a lesson. Every rejection was redirection. She never stopped. She never gave up.</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🎊</div>
+      <div class="ach-title">Result Day</div>
+      <div class="ach-desc">The day the result came out — tears, disbelief, and then the most beautiful realization: it was real. She made it.</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🏛️</div>
+      <div class="ach-title">First Day as Officer</div>
+      <div class="ach-desc">Walking through those doors as a government officer. Every family member's chest swelled with pride that day.</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">⚖️</div>
+      <div class="ach-title">Serving the People</div>
+      <div class="ach-desc">Not just a job. A calling. She brings dedication, honesty, and heart to everything she does in service.</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">👑</div>
+      <div class="ach-title">Our Family's Pride</div>
+      <div class="ach-desc">She is the living proof that hard work and sacrifice always — always — bear fruit in the end.</div>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    <p>"Success is not luck. It is hard work, sacrifice, and the refusal to ever give up."</p>
+    <cite>— The story of our Akka</cite>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  PAGE 4 – CHILDHOOD MEMORIES                                 -->
+<!-- ============================================================ -->
+<section id="memories">
+  <div class="section-tag tag-pink">🕰 Looking Back</div>
+  <div class="page-title">Childhood <span>Memories</span></div>
+  <div class="page-subtitle">Because the best chapters of my life had you in them.</div>
+
+  <div class="memories-grid">
+    <div class="memory-card">
+      <div class="memory-emoji">🏠</div>
+      <div class="memory-title">Our Childhood Home</div>
+      <div class="memory-desc">"Running around the house, fighting for the last piece of dessert, and somehow always forgiving each other before bedtime."</div>
+    </div>
+    <div class="memory-card">
+      <div class="memory-emoji">🏫</div>
+      <div class="memory-title">School Days</div>
+      <div class="memory-desc">"You always looked out for me, even when you pretended not to. I saw you. I always saw you."</div>
+    </div>
+    <div class="memory-card">
+      <div class="memory-emoji">🎭</div>
+      <div class="memory-title">Silly Fights</div>
+      <div class="memory-desc">"I still remember that we fought over a vadai and ended up breaking Priya akka’s tab."</div>
+    </div>
+    <div class="memory-card">
+      <div class="memory-emoji">🌙</div>
+      <div class="memory-title">Late Night Talks</div>
+      <div class="memory-desc">"Sharing secrets, dreams, and fears under the covers during midnight with appa."</div>
+    </div>
+    <div class="memory-card">
+      <div class="memory-emoji">🎉</div>
+      <div class="memory-title">Festival Celebrations</div>
+      <div class="memory-desc">"New clothes, sweets, and chaos — every festival was magical because we were together."</div>
+    </div>
+    <div class="memory-card">
+      <div class="memory-emoji">📸</div>
+      <div class="memory-title">Transformation</div>
+      <div class="memory-desc">"Even Appa says, “You both are always talking and never tell me the secret"</div>
+    </div>
+  </div>
+
+  <div class="akka-msg">
+    "No matter how grown up you become,<br>no matter what titles the world gives you —<br>you will always be my <em>Akka</em>."
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  PAGE 5 – LETTERS                                            -->
+<!-- ============================================================ -->
+<section id="letters">
+  <div class="section-tag tag-blue">💌 Written with love</div>
+  <div class="page-title">Letters to My <span>Sister</span></div>
+  <div class="page-subtitle">Three letters. Three truths. One heart.</div>
+
+  <div class="letters-grid">
+    <div class="letter-card">
+      <div class="letter-tag tag-emotional">💕 Emotional</div>
+      <h4>Dear Drama Queen Akka,</h4>
+      <p>I have learned so much from you — especially how to stay strong in difficult situations. You may not know it, but you inspired me more than anyone else.
+
+I have seen you cry for the people you love. We are not a family that expresses emotions loudly, but I have always seen your heart. You never showed everything you felt, yet I knew there were so many unspoken emotions inside you.
+
+I don’t even know where this love began. Maybe it started in childhood — even in those school days when I fought with you and said I hated you more than anyone. But today, I realize that love was always there, growing quietly.
+
+I have watched a carefree girl slowly become a strong, responsible woman… and now a beautiful mother. Seeing you take care of your baby with so much love makes my heart full.
+
+I truly wish your baby girl grows into a “Getzy 2.0” — carrying our late mom’s grace, strength, and kindness within her.
+
+I have seen your tears. And today, I see your happiness. You have the family we always prayed for. Even in your sleepless nights, I know your heart is full.
+
+This is your first birthday as a mother — and that makes it even more special.
+
+You have always been graceful, just like your name. And you will always be my greatest inspiration.
+
+I love you with my whole heart.</p>
+      <div class="letter-sig">— The sibling who knows too much 😂</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  PAGE 6 – ACHIEVEMENTS TIMELINE                              -->
+<!-- ============================================================ -->
+<section id="timeline-page">
+  <div class="section-tag tag-gold">🌟 Her story</div>
+  <div class="page-title">A Life of <span>Milestones</span></div>
+  <div class="page-subtitle">Every chapter more beautiful than the last.</div>
+
+  <div class="big-timeline">
+    <div class="btl-item">
+      <div class="btl-content">
+        <div class="btl-icon">🌸</div>
+        <div class="btl-year">The Beginning</div>
+        <h4>Born to Shine</h4>
+        <p>The day she entered this world.</p>
+      </div>
+    </div>
+    <div class="btl-item">
+      <div class="btl-content">
+        <div class="btl-icon">🎓</div>
+        <div class="btl-year">Education</div>
+        <h4>Graduation</h4>
+        <p>She walked across that stage with whole hearted.</p>
+      </div>
+    </div>
+    <div class="btl-item">
+      <div class="btl-content">
+        <div class="btl-icon">📖</div>
+        <div class="btl-year">The Grind</div>
+        <h4>Exam Preparation</h4>
+        <p>Months of sacrifice, late nights, and unwavering focus.</p>
+      </div>
+    </div>
+    <div class="btl-item">
+      <div class="btl-content">
+        <div class="btl-icon">🏆</div>
+        <div class="btl-year">Victory</div>
+        <h4>Government Job</h4>
+        <p>Hard work turned to triumph. Our family's proudest moment.</p>
+      </div>
+    </div>
+    <div class="btl-item">
+      <div class="btl-content">
+        <div class="btl-icon">💍</div>
+        <div class="btl-year">A New Journey</div>
+        <h4>Marriage</h4>
+        <p>She said yes and started a beautiful new chapter of love.</p>
+      </div>
+    </div>
+    <div class="btl-item">
+      <div class="btl-content">
+        <div class="btl-icon">📋</div>
+        <div class="btl-year">The Magic Moment</div>
+        <h4>Kit Test ✨</h4>
+        <p>Two lines. The world changed. A mother was about to be born.</p>
+      </div>
+    </div>
+    <div class="btl-item">
+      <div class="btl-content">
+        <div class="btl-icon">👶</div>
+        <div class="btl-year">Pure Joy</div>
+        <h4>Baby Arrives</h4>
+        <p>The most precious gift — her baby's first cry filled the room.</p>
+      </div>
+    </div>
+    <div class="btl-item">
+      <div class="btl-content">
+        <div class="btl-icon">🎂</div>
+        <div class="btl-year">Today</div>
+        <h4>This Birthday</h4>
+        <p>A Government Officer. A Mother. A Superwoman. Happy Birthday! 🎉</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  PAGE 7 – GALLERY (Scans, Kit, Audio)                        -->
+<!-- ============================================================ -->
+<section id="gallery">
+  <div class="section-tag tag-pink">🖼 Precious Moments</div>
+  <div class="page-title">Our Most <span>Precious</span> Keepsakes</div>
+  <div class="page-subtitle">No baby picture needed — we have something even more real.</div>
+
+  <div class="gallery-grid">
+    <div class="gallery-card">
+      <div class="gallery-thumb audio-bg">
+        <div style="text-align:center">
+          <div style="font-size:56px">🎵</div>
+          <div class="audio-viz">
+            <div class="audio-viz-bar" style="animation-delay:0s;height:8px"></div>
+            <div class="audio-viz-bar" style="animation-delay:0.1s;height:14px"></div>
+            <div class="audio-viz-bar" style="animation-delay:0.2s;height:20px"></div>
+            <div class="audio-viz-bar" style="animation-delay:0.15s;height:16px"></div>
+            <div class="audio-viz-bar" style="animation-delay:0.05s;height:10px"></div>
+            <div class="audio-viz-bar" style="animation-delay:0.25s;height:24px"></div>
+            <div class="audio-viz-bar" style="animation-delay:0.3s;height:14px"></div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-body">
+        <h4>🎵 Her First Cry</h4>
+        <p>The most precious audio in the world. That first breath, that first sound — the moment she became a mother.</p>
+        <audio controls style="width:100%;margin-top:10px;accent-color:var(--peach)">
+          <source src="images\WhatsApp Audio 2026-02-27 at 10.12.12 PM (1).ogg" type="audio/mpeg">
+          <source src="images/first_cry.wav" type="audio/wav">
+          <source src="images/first_cry.m4a" type="audio/mp4">
+        </audio>
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <div class="gallery-thumb scan-bg" id="scanThumbGallery" style="overflow:hidden;padding:0;">
+        <img src="images\miracle.jfif" alt="Baby Scan"
+          onerror="this.src='images/scan2.jpg';this.onerror=()=>this.outerHTML='<div style=\'color:rgba(255,255,255,0.4);text-align:center;padding:20px;\'><div style=\'font-size:56px\'>🩻</div><div style=\'font-size:12px;margin-top:4px\'>Place scan1.jpg in images/</div></div>'"
+          style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="gallery-body">
+        <h4>🩻 Baby Scans</h4>
+        <p>Before the world could meet her baby — you saw this. A tiny soul growing, safe and loved, inside of you.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;">
+          <img src="images\scan2.jfif" onerror="this.style.display='none'" style="width:56px;height:56px;object-fit:cover;border-radius:8px;">
+          <img src="images\scan3.jfif" onerror="this.style.display='none'" style="width:56px;height:56px;object-fit:cover;border-radius:8px;">
+          <img src="images\scan4.jfif" onerror="this.style.display='none'" style="width:56px;height:56px;object-fit:cover;border-radius:8px;">
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <div class="gallery-thumb kit-bg" style="overflow:hidden;padding:0;">
+        <img src="images\kit.jfif" alt="Kit Tester"
+          onerror="this.src='images/kit_tester.jpeg';this.onerror=()=>this.outerHTML='<div style=\'text-align:center;color:var(--peach);padding:20px;\'><div style=\'font-size:56px\'>📋</div><div style=\'font-size:12px;margin-top:4px;color:#888\'>Place kit_tester.jpg in images/</div></div>'"
+          style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="gallery-body">
+        <h4>📋 Kit Tester</h4>
+        <p>That tiny plastic strip that carried the biggest news of your life. Two lines that rewrote your entire story.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  PAGE 9 – BLESSINGS                                          -->
+<!-- ============================================================ -->
+<section id="blessings">
+  <div class="section-tag tag-blue">🌈 Your turn</div>
+  <div class="page-title">Send Your <span>Blessings</span></div>
+  <div class="page-subtitle">Leave a wish for Akka. She'll treasure every single one.</div>
+
+  <div class="wish-form">
+    <div class="form-group">
+      <label>Your Name 💕</label>
+      <input type="text" id="wishName" placeholder="Who is sending this blessing?">
+    </div>
+    <div class="form-group">
+      <label>Your Birthday Wish 🎂</label>
+      <textarea id="wishMessage" rows="4" placeholder="Write something beautiful for Akka…"></textarea>
+    </div>
+    <button class="btn-submit" onclick="submitWish()">Send My Blessing 🌸</button>
+  </div>
+
+  <div class="wishes-display">
+    <h3>💌 Wishes Wall</h3>
+    <div id="wishesList"></div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  PAGE 10 – FINAL SURPRISE                                    -->
+<!-- ============================================================ -->
+<section id="final">
+  <div id="surpriseBtn" style="text-align:center;position:relative;z-index:1;">
+    <div class="section-tag" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);margin-bottom:24px;">🎉 Final Page</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,5vw,48px);color:rgba(255,255,255,0.6);margin-bottom:32px;font-style:italic;">You've reached the end…<br>or have you?</div>
+    <button class="surprise-btn" onclick="revealSurprise()">✨ Open Your Final Surprise ✨</button>
+  </div>
+
+  <div class="final-message" id="finalMessage" style="position:relative;z-index:1;">
+    <div style="font-size:clamp(48px,12vw,120px);margin-bottom:16px;animation:floatEmoji 2s ease infinite alternate;">🎂</div>
+    <div class="final-big-text">
+      We are so<br><span>Proud of You.</span>
+    </div>
+    <div class="final-big-text" style="font-size:clamp(28px,6vw,64px);margin-top:8px;">
+      Happy Birthday <span>Superwoman</span> ❤️
+    </div>
+    <div class="final-sub" style="margin-top:24px;">
+      Government Officer. New Mother. Loving Sister. Incredible Human.<br>
+      Today and every day — <em>you are celebrated, you are loved, you are enough.</em>
+    </div>
+    <div style="margin-top:40px;font-size:40px;animation:heartbeat 1s ease infinite;">
+      💖
+    </div>
+  </div>
+
+  <style>
+    @keyframes floatEmoji { from { transform: translateY(0); } to { transform: translateY(-20px); } }
+    @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
+  </style>
+</section>
+
+<script>
+// ===== FLOATING ICONS =====
+const icons = ['🍼','🌸','⭐','💕','✨','🌼','👶','🎀','🌺','💫','🎉','💐'];
+const container = document.getElementById('floatingIcons');
+icons.forEach((icon, i) => {
+  const el = document.createElement('div');
+  el.className = 'float-item';
+  el.textContent = icon;
+  el.style.left = (Math.random() * 95) + '%';
+  el.style.animationDuration = (8 + Math.random() * 12) + 's';
+  el.style.animationDelay = (Math.random() * 10) + 's';
+  container.appendChild(el);
+});
+
+// ===== COUNTDOWN =====
+(function() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth(); // 0-indexed
+
+  // SET BIRTHDAY HERE (default: March 15 — change as needed)
+  let bday = new Date(year, 1, 28); // month is 0-indexed, so 2 = March
+  if (bday <= now) bday = new Date(year + 1, 2, 15);
+
+  const isBirthday = (now.getMonth() === bday.getMonth() - 1 && now.getDate() === bday.getDate());
+
+  function update() {
+    const n = new Date();
+    const diff = bday - n;
+    if (diff <= 0) {
+      document.getElementById('countdownSection').innerHTML = '<div class="birthday-msg">🎂 Today is her Birthday! 🎉</div>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('countdown').innerHTML = [
+      [d,'Days'],[h,'Hours'],[m,'Mins'],[s,'Secs']
+    ].map(([n,u]) => `<div class="countdown-box"><div class="countdown-num">${String(n).padStart(2,'0')}</div><div class="countdown-unit">${u}</div></div>`).join('');
+  }
+  update();
+  setInterval(update, 1000);
+})();
+
+// ===== SCROLL ANIMATIONS =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.tl-item, .ach-card, .memory-card, .letter-card, .btl-item, .gallery-card, .reason-item').forEach(el => observer.observe(el));
+
+// ===== WISHES =====
+let wishes = JSON.parse(localStorage.getItem('akkaWishes') || '[]');
+
+function renderWishes() {
+  const list = document.getElementById('wishesList');
+  if (wishes.length === 0) {
+    list.innerHTML = '<div style="text-align:center;color:#aaa;font-style:italic;font-size:14px;">Be the first to send a blessing 💕</div>';
+    return;
+  }
+  list.innerHTML = wishes.slice().reverse().map(w =>
+    `<div class="wish-item"><div class="wish-name">💕 ${w.name}</div><div class="wish-msg">${w.message}</div></div>`
+  ).join('');
+}
+
+function submitWish() {
+  const name = document.getElementById('wishName').value.trim();
+  const msg = document.getElementById('wishMessage').value.trim();
+  if (!name || !msg) { alert('Please enter your name and a wish 💕'); return; }
+  wishes.push({ name, message: msg });
+  localStorage.setItem('akkaWishes', JSON.stringify(wishes));
+  document.getElementById('wishName').value = '';
+  document.getElementById('wishMessage').value = '';
+  renderWishes();
+}
+
+renderWishes();
+
+// ===== FINAL SURPRISE =====
+function revealSurprise() {
+  document.getElementById('surpriseBtn').style.display = 'none';
+  document.getElementById('finalMessage').style.display = 'block';
+  launchConfetti();
+}
+
+function launchConfetti() {
+  const colors = ['#F4A98A','#F2C4CE','#C9A84C','#3D5A80','#A8D8EA','#FFD6E0','#C8E6C9'];
+  for (let i = 0; i < 120; i++) {
+    setTimeout(() => {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.width = (6 + Math.random() * 8) + 'px';
+      c.style.height = (6 + Math.random() * 8) + 'px';
+      c.style.animationDuration = (2 + Math.random() * 3) + 's';
+      c.style.animationDelay = Math.random() * 0.5 + 's';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 5000);
+    }, i * 30);
+  }
+}
+</script>
+</body>
+</html>
